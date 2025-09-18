@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SumAI</title>
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1e40af;
+        --success: #10b981;
+        --success-dark: #059669;
+        --text: #111827;
+        --muted: #6b7280;
+        --bg: #f3f4f6;
+        --card: #ffffff;
+        --radius: 10px;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      }
+
+      body {
+        font-family: "Inter", "Segoe UI", Arial, sans-serif;
+        background: var(--bg);
+        min-width: 480px;
+        min-height: 280px;
+        padding: 24px;
+        margin: 0;
+        color: var(--text);
+      }
+
+      h2 {
+        margin: 0 0 20px;
+        font-size: 22px;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .options {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      /* styled dropdown */
+      select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        padding: 10px 40px 10px 14px;
+        font-size: 14px;
+        border: 1px solid #d1d5db;
+        border-radius: var(--radius);
+        background: var(--card)
+          url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'><path fill='%236b7280' d='M7 10l5 5 5-5z'/></svg>")
+          no-repeat right 12px center;
+        background-size: 14px;
+        box-shadow: var(--shadow);
+        cursor: pointer;
+        transition: border-color 0.2s, box-shadow 0.2s, transform 0.1s;
+      }
+
+      select:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        outline: none;
+        transform: translateY(-1px);
+      }
+
+      /* buttons */
+      button {
+        padding: 10px 16px;
+        font-size: 14px;
+        font-weight: 600;
+        border: none;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+        box-shadow: var(--shadow);
+      }
+
+      button:active {
+        transform: translateY(1px);
+      }
+
+      #summarize {
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: #fff;
+      }
+      #summarize:hover {
+        background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      }
+
+      #copy-btn {
+        background: linear-gradient(135deg, var(--success), var(--success-dark));
+        color: #fff;
+      }
+      #copy-btn:hover {
+        background: linear-gradient(135deg, var(--success-dark), var(--success));
+      }
+
+      /* result area */
+      #result {
+        background: var(--card);
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 18px;
+        min-height: 150px;
+        max-height: 360px;
+        overflow-y: auto;
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--text);
+        box-shadow: var(--shadow);
+        white-space: pre-wrap;
+      }
+
+      #result ul {
+        padding-left: 20px;
+        margin: 0;
+      }
+
+      #result li {
+        margin-bottom: 8px;
+      }
+
+      /* loading spinner */
+      .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 120px;
+      }
+
+      .loader {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid var(--primary);
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>SumAI</h2>
+
+    <div class="options">
+      <select id="summary-type">
+        <option value="brief">Brief Summary</option>
+        <option value="detailed">Detailed Summary</option>
+        <option value="bullets">Bullet Points</option>
+      </select>
+      <button id="summarize">Summarize</button>
+      <button id="copy-btn">Copy</button>
+    </div>
+
+    <div id="result">
+      Select a summary type and click "Summarize" to generate a summary.
+    </div>
+
+    <script src="config.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

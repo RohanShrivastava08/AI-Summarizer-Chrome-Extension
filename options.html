@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AI Summary Settings — SumAI</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1e40af;
+        --success: #10b981;
+        --success-dark: #059669;
+        --text: #0f172a;
+        --muted: #6b7280;
+        --bg: #f3f4f6;
+        --card: #ffffff;
+        --radius: 12px;
+        --shadow: 0 6px 20px rgba(16, 24, 40, 0.06);
+        --micro-shadow: 0 3px 10px rgba(16, 24, 40, 0.04);
+        font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      }
+
+      html, body {
+        height: 100%;
+        margin: 0;
+        background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .wrap {
+        display: flex;
+        justify-content: center;
+        padding: 28px;
+        box-sizing: border-box;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 700px;
+        background: var(--card);
+        border-radius: 16px;
+        padding: 22px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(16,24,40,0.03);
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 18px;
+      }
+
+      /* small logo square */
+      .logo {
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 18px;
+        box-shadow: var(--micro-shadow);
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        flex: 0 0 56px;
+      }
+
+      .title-wrap {
+        display: flex;
+        flex-direction: column;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 20px;
+        color: var(--text);
+        letter-spacing: 0.2px;
+      }
+
+      p.subtitle {
+        margin: 4px 0 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .content {
+        margin-top: 8px;
+      }
+
+      .form {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 6px;
+      }
+
+      .form-row {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 8px;
+        font-size: 13px;
+      }
+
+      input[type="text"] {
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 1px solid #e6e9ef;
+        background: #fff;
+        font-size: 14px;
+        box-shadow: inset 0 1px 2px rgba(16,24,40,0.02);
+        transition: box-shadow .15s, border-color .12s;
+      }
+
+      input[type="text"]::placeholder { color: #9aa4b2; }
+
+      input[type="text"]:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(37,99,235,0.10);
+      }
+
+      .hint {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 6px;
+      }
+
+      .hint a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .hint a:hover { text-decoration: underline; }
+
+      .actions {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        margin-top: 6px;
+      }
+
+      .btn {
+        padding: 10px 16px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 14px;
+        cursor: pointer;
+        border: none;
+        box-shadow: var(--micro-shadow);
+      }
+
+      .btn-save {
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: #fff;
+      }
+
+      .btn-save:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-clear {
+        background: transparent;
+        color: var(--text);
+        border: 1px solid rgba(16,24,40,0.06);
+      }
+
+      .success-message {
+        margin-left: 8px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        background: #ecfdf5;
+        border: 1px solid #d1fae5;
+        color: var(--success-dark);
+        font-size: 13px;
+        display: none;
+        align-items: center;
+      }
+
+      .footer {
+        margin-top: 20px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        color:var(--muted);
+        font-size:13px;
+      }
+
+      .small {
+        font-size:12px;
+        color: #9aa4b2;
+      }
+
+      /* responsive */
+      @media (max-width:640px){
+        .container { padding:16px; border-radius:12px; }
+        .logo { width:48px; height:48px; flex:0 0 48px; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div class="container" role="main" aria-labelledby="page-title">
+        <header>
+          <!-- If you have an icon file, replace the text below with:
+               <img src="icons/icon128.png" alt="SumAI icon" style="width:40px;height:40px;border-radius:8px">
+               Or ask me to provide an inline SVG and I will add it. -->
+          <div class="logo" aria-hidden="true">Sa</div>
+
+          <div class="title-wrap">
+            <h1 id="page-title">SumAI Settings</h1>
+            <p class="subtitle">Configure your API key and preferences</p>
+          </div>
+        </header>
+
+        <div class="content">
+          <form id="settings-form" class="form" onsubmit="return false;">
+            <div class="form-row">
+              <label for="api-key">Gemini API Key</label>
+              <input
+                id="api-key"
+                type="text"
+                placeholder="Enter your Gemini / Google AI Studio API key"
+                aria-label="Gemini API Key"
+              />
+              <div class="hint">
+                Get an API key from
+                <a href="https://makersuite.google.com/app/apikey" target="_blank" rel="noopener noreferrer">
+                  Google AI Studio
+                </a>
+                — store it here to enable in-extension summarization.
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="model-choice">Model (optional)</label>
+              <input id="model-choice" type="text" placeholder="e.g. gemini-pro, gemini-1.5" />
+              <div class="hint">Leave blank to use the default model.</div>
+            </div>
+
+            <div class="actions">
+              <button id="save-button" class="btn btn-save" type="button">Save Settings</button>
+              <button id="clear-button" class="btn btn-clear" type="button">Clear</button>
+
+              <div id="success-message" class="success-message" role="status" aria-live="polite">
+                ✅ Settings saved
+              </div>
+            </div>
+          </form>
+
+          <div class="footer" aria-hidden="false">
+            <div class="small">SumAI • v1.0</div>
+            <div class="small">Settings stored locally in this browser</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Lightweight options.js logic inline (keeps experience tight).
+      // If you keep a separate options.js, you can remove this block and use your file.
+      const apiInput = document.getElementById('api-key');
+      const modelInput = document.getElementById('model-choice');
+      const saveBtn = document.getElementById('save-button');
+      const clearBtn = document.getElementById('clear-button');
+      const successEl = document.getElementById('success-message');
+
+      // Load saved settings (Chrome storage if available, else localStorage)
+      function loadSettings() {
+        if (chrome?.storage?.sync) {
+          chrome.storage.sync.get(['apiKey', 'model'], (res) => {
+            if (res.apiKey) apiInput.value = res.apiKey;
+            if (res.model) modelInput.value = res.model;
+          });
+        } else {
+          apiInput.value = localStorage.getItem('sumai_apiKey') || '';
+          modelInput.value = localStorage.getItem('sumai_model') || '';
+        }
+      }
+
+      function saveSettings() {
+        const apiKey = apiInput.value.trim();
+        const model = modelInput.value.trim();
+
+        if (chrome?.storage?.sync) {
+          chrome.storage.sync.set({ apiKey, model }, () => {
+            showSuccess();
+          });
+        } else {
+          localStorage.setItem('sumai_apiKey', apiKey);
+          localStorage.setItem('sumai_model', model);
+          showSuccess();
+        }
+      }
+
+      function clearSettings() {
+        apiInput.value = '';
+        modelInput.value = '';
+        if (chrome?.storage?.sync) {
+          chrome.storage.sync.remove(['apiKey', 'model'], () => {
+            showSuccess('Cleared');
+          });
+        } else {
+          localStorage.removeItem('sumai_apiKey');
+          localStorage.removeItem('sumai_model');
+          showSuccess('Cleared');
+        }
+      }
+
+      function showSuccess(text = '✅ Settings saved') {
+        successEl.textContent = text;
+        successEl.style.display = 'inline-flex';
+        setTimeout(() => (successEl.style.display = 'none'), 2200);
+      }
+
+      saveBtn.addEventListener('click', saveSettings);
+      clearBtn.addEventListener('click', clearSettings);
+
+      document.addEventListener('DOMContentLoaded', loadSettings);
+    </script>
+  </body>
+</html>
