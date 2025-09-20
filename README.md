@@ -1,4 +1,4 @@
-# 🧠 AI-Summarizer Chrome Extensio
+# 🧠 AI-Summarizer Chrome Extension
 
 
 
