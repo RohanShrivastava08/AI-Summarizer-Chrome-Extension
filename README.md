@@ -4,10 +4,6 @@
 
 <img width="1470" height="956" alt="Image" src="https://github.com/user-attachments/assets/14dcb7da-39f5-4f1b-b77d-c0b7211db7ce" />
 
-<img width="1470" height="956" alt="Image" src="https://github.com/user-attachments/assets/00a38393-338c-468e-a139-f53d27796019" />
-
-<img width="1470" height="956" alt="Image" src="https://github.com/user-attachments/assets/94a9f659-2636-460d-8fe2-d09854e19690" />
-
 
 - A simple and efficient Chrome Extension that summarizes webpages or selected text on the go.
 - Built with JavaScript and Chrome’s Manifest V3 APIs.
@@ -131,7 +127,13 @@ cd AI-Summarizer-Chrome-Extension
 
 ## 📸 Screenshots
 
+<img width="229" height="37" alt="Image" src="https://github.com/user-attachments/assets/f53dd693-d55b-4709-9eee-c6f85e1a78d5" />
 
+<img width="1470" height="956" alt="Image" src="https://github.com/user-attachments/assets/14dcb7da-39f5-4f1b-b77d-c0b7211db7ce" />
+
+<img width="1470" height="956" alt="Image" src="https://github.com/user-attachments/assets/00a38393-338c-468e-a139-f53d27796019" />
+
+<img width="1470" height="956" alt="Image" src="https://github.com/user-attachments/assets/94a9f659-2636-460d-8fe2-d09854e19690" />
 
 ## 🤝 Contributing
 We welcome community contributions! Follow the steps below to contribute:
