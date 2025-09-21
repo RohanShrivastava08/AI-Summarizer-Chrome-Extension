@@ -1,12 +1,11 @@
 # 🧠 AI-Summarizer Chrome Extension
 
+- A simple and efficient Chrome Extension that summarizes webpages or selected text on the go.
+- Built with JavaScript and Chrome’s Manifest V3 APIs.
+
 <img width="229" height="37" alt="Image" src="https://github.com/user-attachments/assets/f53dd693-d55b-4709-9eee-c6f85e1a78d5" />
 
 <img width="1470" height="956" alt="Image" src="https://github.com/user-attachments/assets/14dcb7da-39f5-4f1b-b77d-c0b7211db7ce" />
-
-
-- A simple and efficient Chrome Extension that summarizes webpages or selected text on the go.
-- Built with JavaScript and Chrome’s Manifest V3 APIs.
 
 
 ## 📋 Table of Contents
